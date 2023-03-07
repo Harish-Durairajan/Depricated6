@@ -12,12 +12,12 @@ pipeline{
                 userRemoteConfigs: [[url: '${git_url}']])
             }
         }   
-        // stage("checking docker deamon running"){
-        //     steps{
-        //         sh "mvn clean"
-        //         sh "mvn install"
-        //     }
-        // }  
+        stage("checking docker deamon running"){
+            steps{
+                sh "mvn clean"
+                sh "mvn install"
+            }
+        }  
         // stage("docker logging"){
         //     steps{
         //         sh "docker login -p ${$DOCKER_PASSWORD}"
