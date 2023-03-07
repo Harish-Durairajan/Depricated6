@@ -20,7 +20,8 @@ pipeline{
         // }  
         stage("docker logging"){
             steps{
-                sh "docker login -p ${$DOCKER_PASSWORD}"
+                sh "echo harish | sudo -S docker images > /dev/null"
+                // sh "docker login -p ${$DOCKER_PASSWORD}"
                 // sh "docker login --username foo --password-stdin < ~/my_password"
                 // -u ${$DOCKER_USERNAME}
             }
