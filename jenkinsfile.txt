@@ -18,13 +18,13 @@ pipeline{
                 sh "mvn install"
             }
         }  
-        // stage("docker logging"){
-        //     steps{
-        //         sh "docker login -p ${$DOCKER_PASSWORD}"
-        //         // sh "docker login --username foo --password-stdin < ~/my_password"
-        //         // -u ${$DOCKER_USERNAME}
-        //     }
-        // }    
+        stage("docker logging"){
+            steps{
+                sh "docker login -p ${$DOCKER_PASSWORD}"
+                // sh "docker login --username foo --password-stdin < ~/my_password"
+                // -u ${$DOCKER_USERNAME}
+            }
+        }    
         stage("checking docker deamon running"){
             steps{
                 sh "sudo docker images > /dev/null"
