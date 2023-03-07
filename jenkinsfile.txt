@@ -19,7 +19,7 @@ pipeline{
         //         // -u ${$DOCKER_USERNAME}
         //     }
         // }  
-        stage("checking docker deamon running "){
+        stage("checking docker deamon running"){
             steps{
                 sh "mvn clean"
                 sh "mvn install"
