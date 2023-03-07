@@ -18,7 +18,13 @@ pipeline{
         //         // sh "docker login --username foo --password-stdin < ~/my_password"
         //         // -u ${$DOCKER_USERNAME}
         //     }
-        // }        
+        // }  
+        stage("checking docker deamon running"){
+            steps{
+                sh "mvn clean"
+                sh "mvn install"
+            }
+        }      
         stage("checking docker deamon running"){
             steps{
                 sh "sudo docker images > /dev/null"
@@ -31,17 +37,17 @@ pipeline{
         }
         stage("createing the container"){
             steps{
-                sh "sudo docker run --name ${containerName} -p ${port}:8080 -d  imageid1.0:latest"
+                sh "sudo docker run --name ${containerName} -p ${port}:8080 -d  ${imageName}:${tagName}"
             }
         }
         stage("tagging the image file"){
             steps{
-                sh "sudo docker tag ${imageName}:latest ${repositoryName}:latest"
+                sh "sudo docker tag ${imageName}:${tagName} ${repositoryName}:${tagName}"
             }
         }
         stage("pushing the image in docker hub"){
             steps{
-                sh "sudo docker push ${repositoryName}:latest"
+                sh "sudo docker push ${repositoryName}:${tagName}"
             }
         }
     }
