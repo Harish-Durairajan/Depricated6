@@ -11,8 +11,7 @@ pipeline{
                 checkout scmGit(branches: [[name: '*/${Branch}']], 
                 userRemoteConfigs: [[url: '${git_url}']])
             }
-        }
-          
+        }   
         stage("checking docker deamon running"){
             steps{
                 sh "mvn clean"
