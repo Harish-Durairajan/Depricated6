@@ -21,7 +21,7 @@ pipeline{
         }        
         stage("checking docker deamon running"){
             steps{
-                sh "sudo docker images > /dev/null"
+                sh "echo 'harish'| sudo -S docker images > /dev/null"
             }
         }
         stage("Building the image file"){
