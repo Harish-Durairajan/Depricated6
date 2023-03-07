@@ -19,27 +19,22 @@ pipeline{
         }
         stage("Building the image file"){
             steps{
-                sh "sudo docker build -t imageid1.0."
-            }
-        }
-        stage("Building the image file"){
-            steps{
-                sh "sudo docker build -t imageid1.0."
+                sh "sudo docker build -t ${imageName}"
             }
         }
         stage("createing the container"){
             steps{
-                sh "sudo docker run --name springapp20 -p 8080:8080 -d  imageid1.0:latest"
+                sh "sudo docker run --name ${containerName} -p ${port}:8080 -d  imageid1.0:latest"
             }
         }
         stage("tagging the image file"){
             steps{
-                sh "sudo docker tag imageid1.0:latest harishdurai/harish:latest"
+                sh "sudo docker tag ${imageName}:latest harishdurai/${repositoryName}:latest"
             }
         }
         stage("pushing the image in docker hub"){
             steps{
-                sh "sudo docker push harishdurai/harish:latest"
+                sh "sudo docker push harishdurai/${repositoryName}:latest"
             }
         }
     }
