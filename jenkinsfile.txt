@@ -14,8 +14,8 @@ pipeline{
         }
         stage("docker logging"){
             steps{
-                // sh "docker login -u ${$DOCKER_USERNAME} -p ${$DOCKER_PASSWORD}"
-                sh "docker login --username foo --password-stdin < ~/my_password"
+                sh "docker login -u ${$DOCKER_USERNAME} -p ${$DOCKER_PASSWORD}"
+                // sh "docker login --username foo --password-stdin < ~/my_password"
             }
         }        
         stage("checking docker deamon running"){
