@@ -12,12 +12,7 @@ pipeline{
                 userRemoteConfigs: [[url: '${git_url}']])
             }
         }   
-        // stage("checking docker deamon running"){
-        //     steps{
-        //         sh "mvn clean"
-        //         sh "mvn install"
-        //     }
-        // }  
+          
         stage("docker logging"){
             steps{
                 sh "echo harish | sudo -S docker images > /dev/null"
@@ -29,6 +24,12 @@ pipeline{
         stage("checking docker deamon running"){
             steps{
                 sh "sudo docker images > /dev/null"
+            }
+        }
+        stage("checking docker deamon running"){
+            steps{
+                sh "mvn clean"
+                sh "mvn install"
             }
         }
         stage("Building the image file"){
