@@ -29,12 +29,12 @@ pipeline{
         }
         stage("tagging the image file"){
             steps{
-                sh "sudo docker tag ${imageName}:latest harishdurai/${repositoryName}:latest"
+                sh "sudo docker tag ${imageName}:latest ${repositoryName}:latest"
             }
         }
         stage("pushing the image in docker hub"){
             steps{
-                sh "sudo docker push harishdurai/${repositoryName}:latest"
+                sh "sudo docker push ${repositoryName}:latest"
             }
         }
     }
