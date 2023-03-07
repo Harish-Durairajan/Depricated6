@@ -12,13 +12,13 @@ pipeline{
                 userRemoteConfigs: [[url: '${git_url}']])
             }
         }
-        stage("docker logging"){
-            steps{
-                sh "docker login -p ${$DOCKER_PASSWORD}"
-                // sh "docker login --username foo --password-stdin < ~/my_password"
-                // -u ${$DOCKER_USERNAME}
-            }
-        }        
+        // stage("docker logging"){
+        //     steps{
+        //         sh "docker login -p ${$DOCKER_PASSWORD}"
+        //         // sh "docker login --username foo --password-stdin < ~/my_password"
+        //         // -u ${$DOCKER_USERNAME}
+        //     }
+        // }        
         stage("checking docker deamon running"){
             steps{
                 sh "echo 'harish'| sudo -S docker images > /dev/null"
